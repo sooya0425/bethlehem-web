@@ -11,7 +11,7 @@ export default function NoticePage() {
       <Navbar />
       <SubMenuNav />
 
-      <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-muted flex items-center justify-center text-muted-foreground">
           <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-background z-10" />
           <img src="/images/notice_hero.png" alt="공지사항" className="w-full h-full object-cover opacity-80" />

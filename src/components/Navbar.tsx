@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Heart, ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
+import { ROUTES } from "@/lib/routes";
 
 interface SubItem {
   name: string;
@@ -16,47 +17,61 @@ interface NavItem {
   name: string;
   href: string;
   subItems?: SubItem[];
+  icon?: string;
+  isExternal?: boolean;
 }
 
 const navItems: NavItem[] = [
   {
     name: "베들레헴 소개",
-    href: "/intro/greeting",
+    href: ROUTES.INTRO_GREETING,
     subItems: [
-      { name: "인사말", href: "/intro/greeting" },
-      { name: "연혁", href: "/intro/history" },
-      { name: "시설안내", href: "/facility-tour" },
-      { name: "오시는 길", href: "/intro/location" },
+      { name: "인사말", href: ROUTES.INTRO_GREETING },
+      { name: "연혁", href: ROUTES.INTRO_HISTORY },
+      { name: "시설안내", href: ROUTES.FACILITY_TOUR },
+      { name: "오시는 길", href: ROUTES.INTRO_LOCATION },
     ],
   },
-  { name: "직원/식구 소개", href: "/members" },
+  { name: "직원/식구 소개", href: ROUTES.MEMBERS },
   {
     name: "커뮤니티",
-    href: "/news/notice",
+    href: ROUTES.NEWS_NOTICE,
     subItems: [
-      { name: "공지사항", href: "/news/notice" },
-      { name: "자유게시판", href: "/news/freeboard" },
-      { name: "소식지 및 자료", href: "/news/newsletter" },
+      { name: "공지사항", href: ROUTES.NEWS_NOTICE },
+      { name: "자유게시판", href: ROUTES.NEWS_FREEBOARD },
+      { name: "소식지 및 자료", href: ROUTES.NEWS_NEWSLETTER },
     ],
   },
   {
     name: "갤러리",
-    href: "/news/gallery/story",
+    href: ROUTES.GALLERY_STORY,
     subItems: [
-      { name: "베들레헴 이야기", href: "/news/gallery/story" },
-      { name: "연중행사", href: "/news/gallery/events" },
-      { name: "방문스케치", href: "/news/gallery/visit" },
-      { name: "사진자료", href: "/news/gallery/photos" },
+      { name: "베들레헴 이야기", href: ROUTES.GALLERY_STORY },
+      { name: "연중행사", href: ROUTES.GALLERY_EVENTS },
+      { name: "방문스케치", href: ROUTES.GALLERY_VISIT },
+      { name: "사진자료", href: ROUTES.GALLERY_PHOTOS },
     ],
   },
-  { name: "소울스테이", href: "/soulstay" },
+  { name: "소울스테이", href: ROUTES.SOULSTAY },
   {
     name: "후원/봉사 안내",
-    href: "/donation",
+    href: ROUTES.DONATION,
     subItems: [
-      { name: "후원안내", href: "/donation" },
-      { name: "봉사안내", href: "/volunteer" },
+      { name: "후원안내", href: ROUTES.DONATION },
+      { name: "봉사안내", href: ROUTES.VOLUNTEER },
     ],
+  },
+  {
+    name: "네이버 밴드",
+    href: "https://band.us/band/73778627/intro",
+    isExternal: true,
+    icon: "/images/band.png?v=2",
+  },
+  {
+    name: "유튜브",
+    href: "https://youtube.com/channel/UCANZIkR4Wp5teyhBtsi1dOA?si=nKy_v7J8WXgRMM_y",
+    isExternal: true,
+    icon: "/images/youtube.png?v=2",
   },
 ];
 
@@ -128,14 +143,21 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  onClick={(e) => handleClick(e, item.href)}
+                  target={item.isExternal ? "_blank" : undefined}
+                  rel={item.isExternal ? "noopener noreferrer" : undefined}
+                  onClick={(e) => {
+                    if (!item.isExternal) handleClick(e, item.href);
+                  }}
                   className={`flex items-center gap-1 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                     isActive
                       ? "text-primary font-bold bg-primary/5"
                       : "text-foreground/70 hover:text-primary hover:bg-primary/5"
                   }`}
                 >
-                  {item.name}
+                  {item.icon && (
+                    <img src={item.icon} alt={item.name} className="w-5 h-5 object-contain mr-1" />
+                  )}
+                  {!item.isExternal && item.name}
                   {hasSubItems && (
                     <ChevronDown
                       size={14}
@@ -175,46 +197,12 @@ export default function Navbar() {
             );
           })}
           <div className="ml-4 flex items-center gap-3 border-l border-border pl-4">
-            <a 
-              href="https://band.us/band/73778627/intro" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="opacity-70 hover:opacity-100 transition-opacity"
-              title="네이버 밴드"
-            >
-              <img src="/images/band.png?v=2" alt="네이버 밴드" className="w-6 h-6 object-contain" />
-            </a>
-            <a 
-              href="https://youtube.com/channel/UCANZIkR4Wp5teyhBtsi1dOA?si=nKy_v7J8WXgRMM_y" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="opacity-70 hover:opacity-100 transition-opacity"
-              title="유튜브"
-            >
-              <img src="/images/youtube.png?v=2" alt="유튜브" className="h-6 w-auto object-contain" />
-            </a>
             <ThemeToggle />
           </div>
         </div>
 
         {/* Mobile Toggle Group */}
         <div className="md:hidden flex items-center gap-3">
-          <a 
-            href="https://band.us" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="opacity-70 hover:opacity-100 transition-opacity"
-          >
-            <img src="/images/band.png?v=2" alt="네이버 밴드" className="w-6 h-6 object-contain" />
-          </a>
-          <a 
-            href="https://youtube.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="opacity-70 hover:opacity-100 transition-opacity"
-          >
-            <img src="/images/youtube.png?v=2" alt="유튜브" className="h-6 w-auto object-contain" />
-          </a>
           <ThemeToggle />
           <button
             className="text-foreground p-2"
@@ -248,19 +236,27 @@ export default function Navbar() {
                     <div className="flex items-center justify-between">
                       <Link
                         href={item.href}
-                        className={`grow text-lg font-medium py-3 px-4 rounded-xl transition-all ${
+                        target={item.isExternal ? "_blank" : undefined}
+                        rel={item.isExternal ? "noopener noreferrer" : undefined}
+                        className={`grow flex items-center gap-3 text-lg font-medium py-3 px-4 rounded-xl transition-all ${
                           isActive && !hasSubItems
                             ? "bg-primary/10 text-primary font-bold"
                             : "hover:bg-secondary/50"
                         }`}
                         onClick={(e) => {
-                          if (!hasSubItems) {
-                            handleClick(e, item.href);
+                          if (hasSubItems) {
+                            e.preventDefault();
+                            toggleMobileItem(item.name);
+                          } else {
+                            if (!item.isExternal) handleClick(e, item.href);
                             setIsOpen(false);
                           }
                         }}
                       >
-                        {item.name}
+                        {item.icon && (
+                          <img src={item.icon} alt={item.name} className="w-6 h-6 object-contain" />
+                        )}
+                        {!item.isExternal && item.name}
                       </Link>
                       {hasSubItems && (
                         <button

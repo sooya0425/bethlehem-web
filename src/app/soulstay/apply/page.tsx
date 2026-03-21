@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
+import { ROUTES } from "@/lib/routes";
 
 export default function SoulStayApplyPage() {
   const [form, setForm] = useState({
@@ -81,7 +82,7 @@ export default function SoulStayApplyPage() {
                 소울스테이와 함께해 주셔서 감사합니다. <br />
                 담당자가 확인 후 기재하신 연락처로 예약 확정 안내를 드리겠습니다.
               </p>
-              <a href="/soulstay" className="text-primary font-bold hover:underline">
+              <a href={ROUTES.SOULSTAY} className="text-primary font-bold hover:underline">
                 ← 소울스테이 페이지로 돌아가기
               </a>
             </motion.div>
@@ -95,7 +96,7 @@ export default function SoulStayApplyPage() {
     <main className="min-h-screen bg-background transition-colors duration-300">
       <Navbar />
       
-      <section className="pt-32 pb-20 bg-slate-900 text-white">
+      <section className="pt-32 pb-20 bg-muted/50 transition-colors">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -103,7 +104,7 @@ export default function SoulStayApplyPage() {
             className="max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">소울스테이 예약하기</h1>
-            <p className="text-xl text-white/70 leading-relaxed">
+            <p className="text-xl text-muted-foreground leading-relaxed">
               자연 속에서의 쉼과 회복을 위한 첫걸음입니다. <br />
               원하시는 일정과 프로그램을 선택해 주세요.
             </p>

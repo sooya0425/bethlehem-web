@@ -155,7 +155,7 @@ const LocationSection = () => (
         </div>
         <div className="flex flex-wrap gap-4">
           <button className="bg-primary text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">카카오맵 보기</button>
-          <button className="bg-[#03C75A] text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-500/20 hover:scale-105 transition-transform">네이버 지도 보기</button>
+          <button className="bg-green-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-500/20 hover:scale-105 transition-transform">네이버 지도 보기</button>
         </div>
       </div>
     </div>

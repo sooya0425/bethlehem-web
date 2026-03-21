@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 import { Sparkles, Sun, Moon, Leaf, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { ROUTES } from "@/lib/routes";
 
 const programs = [
   {
@@ -30,7 +31,7 @@ export default function SoulStayPage() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url("/images/soulstay_hero.png")' }}
@@ -92,7 +93,7 @@ export default function SoulStayPage() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link 
-                  href="/soulstay/apply"
+                  href={ROUTES.SOULSTAY_APPLY}
                   className="w-full sm:w-auto bg-primary text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group shadow-xl shadow-primary/20"
                 >
                   예약하기

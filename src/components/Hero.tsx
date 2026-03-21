@@ -4,6 +4,7 @@ import React, { Suspense } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { ROUTES } from "@/lib/routes";
 import dynamic from "next/dynamic";
 import { Canvas } from "@react-three/fiber";
 
@@ -69,7 +70,7 @@ export default function Hero() {
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <Link
-                href="/facility-tour"
+                href={ROUTES.FACILITY_TOUR}
                 className="w-full sm:w-auto bg-primary text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center hover:scale-[1.03] active:scale-[0.98]"
               >
                 한눈에 시설 둘러보기 GO!
@@ -81,7 +82,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.5 }}
-              className="mt-8 flex items-center justify-center gap-6 p-4 rounded-2xl bg-black/5 backdrop-blur-md border border-white/10 w-fit mx-auto"
+              className="mt-8 flex items-center justify-center gap-6 p-4 rounded-2xl bg-foreground/5 backdrop-blur-md border border-border/20 w-fit mx-auto"
             >
               <a 
                 href="https://band.us/band/73778627/intro" 

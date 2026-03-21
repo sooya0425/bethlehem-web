@@ -6,6 +6,7 @@ import SubMenuNav from "@/components/SubMenuNav";
 import { motion } from "framer-motion";
 import { Heart, Gift, Coffee, CreditCard, ChevronRight, HandHeart } from "lucide-react";
 import Link from "next/link";
+import { ROUTES } from "@/lib/routes";
 
 const donationTypes = [
   {
@@ -13,28 +14,28 @@ const donationTypes = [
     description: "일시적으로 자유로운 금액을 후원하실 수 있습니다. 한 번의 따뜻한 나눔이 베들레헴 가족에게 큰 힘이 됩니다.",
     icon: <HandHeart size={28} className="text-primary" />,
     color: "bg-primary/5",
-    href: "/donation/apply/general",
+    href: ROUTES.DONATION_APPLY_GENERAL,
   },
   {
     title: "정기후원",
     description: "매월 일정 금액을 정기적으로 후원하여 장애인들의 안정적인 생활을 돕습니다. 꾸준한 나눔이 가장 큰 사랑입니다.",
     icon: <Heart size={28} className="text-accent" />,
     color: "bg-accent/5",
-    href: "/donation/apply/regular",
+    href: ROUTES.DONATION_APPLY_REGULAR,
   },
   {
     title: "물품후원",
     description: "생필품, 식료품, 의류 등 실생활에 필요한 물품을 기부하여 따뜻한 사랑을 전합니다.",
     icon: <Gift size={28} className="text-primary" />,
     color: "bg-secondary/80",
-    href: "/donation/apply/goods",
+    href: ROUTES.DONATION_APPLY_GOODS,
   },
   {
     title: "결연후원",
     description: "특정 장애인과 1:1 결연을 맺어 정서적 지지와 경제적 도움을 줍니다. 한 사람의 든든한 친구가 되어주세요.",
     icon: <Coffee size={28} className="text-accent" />,
     color: "bg-muted/80",
-    href: "/donation/apply/sponsorship",
+    href: ROUTES.DONATION_APPLY_SPONSORSHIP,
   },
 ];
 
@@ -74,7 +75,7 @@ export default function DonationPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`${type.color} p-8 rounded-[2.5rem] border border-transparent hover:border-border transition-all duration-300 flex flex-col`}
+                className={`${type.color} p-8 rounded-4xl border border-transparent hover:border-border transition-all duration-300 flex flex-col`}
               >
                 <div className="w-14 h-14 rounded-2xl bg-card shadow-sm flex items-center justify-center mb-6 ring-1 ring-border">
                   {type.icon}
@@ -90,7 +91,7 @@ export default function DonationPage() {
           </div>
 
           {/* Account Info Card */}
-          <div className="max-w-4xl mx-auto bg-foreground text-background rounded-[3rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+          <div className="max-w-4xl mx-auto bg-foreground text-background rounded-5xl p-8 md:p-16 relative overflow-hidden shadow-2xl">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px] -mr-32 -mt-32" />
             
             <div className="relative z-10 flex flex-col md:flex-row items-center gap-12">
@@ -120,10 +121,10 @@ export default function DonationPage() {
               
               <div className="shrink-0 bg-background/10 backdrop-blur-md p-8 rounded-4xl border border-background/10 text-center">
                 <p className="text-sm font-bold mb-4">온라인 후원 신청</p>
-                <div className="w-32 h-32 bg-white rounded-2xl mx-auto mb-6 flex items-center justify-center text-slate-900 text-xs font-bold p-4">
+                <div className="w-32 h-32 bg-card rounded-2xl mx-auto mb-6 flex items-center justify-center text-card-foreground text-xs font-bold p-4">
                   QR 코드가 들어갈 자리입니다.
                 </div>
-                <Link href="/donation/apply/general" className="block w-full bg-primary text-white py-3 rounded-xl font-bold text-sm shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform">
+                <Link href={ROUTES.DONATION_APPLY_GENERAL} className="block w-full bg-primary text-white py-3 rounded-xl font-bold text-sm shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform">
                   후원 신청서 작성
                 </Link>
               </div>

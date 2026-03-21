@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import SubMenuNav from "@/components/SubMenuNav";
 import { motion } from "framer-motion";
 import { Suspense } from "react";
+import { ROUTES } from "@/lib/routes";
 
 function GeneralDonationForm() {
   const [form, setForm] = useState({
@@ -68,7 +69,7 @@ function GeneralDonationForm() {
           소중한 마음에 감사드립니다. <br />
           담당자가 확인 후 기재하신 연락처로 안내드리겠습니다.
         </p>
-        <a href="/donation" className="text-primary font-bold hover:underline">
+        <a href={ROUTES.DONATION} className="text-primary font-bold hover:underline">
           ← 후원안내 페이지로 돌아가기
         </a>
       </motion.div>

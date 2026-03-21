@@ -34,7 +34,7 @@ export default function FacilityMap({ buildings, onBuildingClick }: FacilityMapP
       />
 
       {/* 이미지 위에 반투명 오버레이 */}
-      <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-foreground/10 pointer-events-none" />
 
       {/* Interactive Pins - 이미지 위에 정확히 오버레이 */}
       {buildings.map((building) => (

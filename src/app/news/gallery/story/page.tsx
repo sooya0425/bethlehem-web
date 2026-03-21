@@ -11,7 +11,7 @@ export default function PreparingPage() {
       <Navbar />
       <SubMenuNav />
 
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-muted flex items-center justify-center text-muted-foreground">
           <img src="/images/story_hero.png" alt="공동체 이야기" className="w-full h-full object-cover opacity-80" />
         </div>

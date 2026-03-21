@@ -11,7 +11,7 @@ export default function LocationPage() {
       <Navbar />
       <SubMenuNav />
 
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-muted flex items-center justify-center text-muted-foreground">
           <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-background z-10" />
           <img src="/images/location_hero.png" alt="오시는 길" className="w-full h-full object-cover opacity-80" />

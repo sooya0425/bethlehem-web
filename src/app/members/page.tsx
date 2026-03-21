@@ -37,7 +37,7 @@ const familyMembers = [
   { name: "햇살", desc: "이름처럼 따사로운 기운을 뿜어냅니다. 처음 보는 사람에게도 먼저 다가가 손을 내미는 사교가입니다.", color: "bg-yellow-100 dark:bg-yellow-950/30", image: "/images/profiles/family_09.png" },
   { name: "나무", desc: "식구들 중 가장 듬직한 맏언니 역할을 합니다. 동생들을 챙기고 보듬는 모습이 영락없는 나무 같습니다.", color: "bg-green-100 dark:bg-green-950/30", image: "/images/profiles/family_10.png" },
   { name: "바다", desc: "시원시원하고 활달한 성격의 소유자입니다. 운동을 좋아해서 매일 아침 체조 시간을 주도합니다.", color: "bg-cyan-100 dark:bg-cyan-950/30", image: "/images/profiles/family_11.png" },
-  { name: "구름", desc: "몽글몽글 순수한 동심을 간직하고 있습니다. 인형 놀이와 동화책 읽기를 가장 좋아하는 순둥이입니다.", color: "bg-slate-100 dark:bg-slate-900/40", image: "/images/profiles/family_12.png" },
+  { name: "구름", desc: "몽글몽글 순수한 동심을 간직하고 있습니다. 인형 놀이와 동화책 읽기를 가장 좋아하는 순둥이입니다.", color: "bg-secondary dark:bg-secondary", image: "/images/profiles/family_12.png" },
   { name: "별이", desc: "밤하늘의 별처럼 반짝이는 호기심을 가졌습니다. 새로운 것을 배우는 데 열심인 노력파 식구입니다.", color: "bg-violet-100 dark:bg-violet-950/30", image: "/images/profiles/family_13.png" },
   { name: "송이", desc: "작고 여리지만 강인한 생명력을 가졌습니다. 식물을 가꾸는 정원사 같은 마음으로 하루를 보냅니다.", color: "bg-fuchsia-100 dark:bg-fuchsia-950/30", image: "/images/profiles/family_14.png" },
   { name: "진주", desc: "묵묵히 자기 자리를 지키는 보석 같은 존재입니다. 누구보다 성실하게 공동체 생활에 참여하는 모범생입니다.", color: "bg-teal-100 dark:bg-teal-950/30", image: "/images/profiles/family_15.png" },
@@ -52,13 +52,13 @@ const ProfileCard = ({ member, onOpen }: { member: any; onOpen: (m: any) => void
     onClick={() => onOpen(member)}
     className="group relative flex flex-col items-center cursor-pointer"
   >
-    <div className={`relative w-full aspect-3/4 rounded-[2.5rem] overflow-hidden ${member.color || "bg-secondary/30"} border border-border/50 group-hover:shadow-2xl group-hover:shadow-primary/15 transition-all duration-500`}>
+    <div className={`relative w-full aspect-3/4 rounded-4xl overflow-hidden ${member.color || "bg-secondary/30"} border border-border/50 group-hover:shadow-2xl group-hover:shadow-primary/15 transition-all duration-500`}>
       {member.image ? (
         <img src={member.image} alt={member.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
       ) : null}
       <div className={`absolute inset-0 flex flex-col items-center justify-center p-6 text-center ${member.image ? 'bg-black/30 text-white opacity-0 group-hover:opacity-100' : ''} transition-all duration-500`}>
         {!member.image && (
-          <div className="w-16 h-16 rounded-2xl bg-white/30 dark:bg-black/20 backdrop-blur-md flex items-center justify-center mb-4 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
+          <div className="w-16 h-16 rounded-2xl bg-muted/30 backdrop-blur-md flex items-center justify-center mb-4 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
             {member.icon || <User size={32} className="text-primary/60" />}
           </div>
         )}
@@ -173,12 +173,12 @@ export default function MembersPage() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-3xl bg-background rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row shadow-primary/20"
+              className="relative w-full max-w-3xl bg-background rounded-5xl overflow-hidden shadow-2xl flex flex-col md:flex-row shadow-primary/20"
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedMember(null)}
-                className="absolute top-6 right-6 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 dark:bg-black/10 dark:hover:bg-black/20 backdrop-blur-md transition-colors text-foreground"
+                className="absolute top-6 right-6 z-10 p-3 rounded-full bg-muted/30 hover:bg-muted/50 backdrop-blur-md transition-colors text-foreground"
               >
                 <X size={24} />
               </button>
@@ -188,7 +188,7 @@ export default function MembersPage() {
                 {selectedMember.image ? (
                   <img src={selectedMember.image} alt={selectedMember.name} className="absolute inset-0 w-full h-full object-cover" />
                 ) : (
-                  <div className="w-full h-full m-12 rounded-2xl bg-white/30 dark:bg-black/20 flex items-center justify-center">
+                  <div className="w-full h-full m-12 rounded-2xl bg-muted/30 flex items-center justify-center">
                     {selectedMember.icon || <User size={80} className="text-primary/40" />}
                   </div>
                 )}
@@ -220,7 +220,7 @@ export default function MembersPage() {
 
       <footer className="py-20 border-t border-border/50">
         <div className="container mx-auto px-6 text-center">
-          <div className="bg-primary/5 rounded-[3rem] p-12 max-w-4xl mx-auto">
+          <div className="bg-primary/5 rounded-5xl p-12 max-w-4xl mx-auto">
             <Heart className="w-12 h-12 text-primary mx-auto mb-6 animate-pulse" />
             <h3 className="text-2xl font-bold mb-4">"우리는 이미 가족입니다"</h3>
             <p className="text-muted-foreground">

@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Megaphone, MessageCircle, FileText, Image as ImageIcon, ArrowUpRight, Pin, Download } from "lucide-react";
+import { ROUTES } from "@/lib/routes";
 
 const cards = [
   {
@@ -11,7 +12,7 @@ const cards = [
     description: "베들레헴공동체의 새롭고 중요한 소식을 가장 먼저 확인하세요.",
     icon: <Megaphone className="text-primary" />,
     className: "md:col-span-2 md:row-span-1 bg-primary/10",
-    href: "/news/notice",
+    href: ROUTES.NEWS_NOTICE,
     content: (
       <div className="mt-4 space-y-3">
         <div className="flex items-center gap-3 p-3 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-md transition-shadow">
@@ -40,7 +41,7 @@ const cards = [
     description: "따뜻한 베들레헴 식구들의 일상을 사진으로 만나보세요.",
     icon: <ImageIcon className="text-accent" />,
     className: "md:col-span-1 md:row-span-2 bg-accent/10 flex flex-col justify-between group-hover:bg-accent/15",
-    href: "/news/gallery/story",
+    href: ROUTES.GALLERY_STORY,
     content: (
       <div className="mt-6">
         <div className="grid grid-cols-2 gap-3 mb-6">
@@ -70,7 +71,7 @@ const cards = [
     description: "솔직하고 따뜻한 이야기를 자유롭게 나누는 소통의 공간입니다.",
     icon: <MessageCircle className="text-secondary" />,
     className: "md:col-span-1 md:row-span-1 bg-secondary/10",
-    href: "/news/freeboard",
+    href: ROUTES.NEWS_FREEBOARD,
     content: (
       <div className="mt-4 bg-card rounded-2xl p-4 border border-border shadow-sm">
         <p className="text-sm text-foreground line-clamp-2 leading-relaxed">
@@ -88,7 +89,7 @@ const cards = [
     description: "유익한 소식지와 안내문 등 필요한 자료들을 다운로드 하세요.",
     icon: <FileText className="text-foreground" />,
     className: "md:col-span-1 md:row-span-1 bg-muted/50 border border-border/50",
-    href: "/news/newsletter",
+    href: ROUTES.NEWS_NEWSLETTER,
     content: (
       <div className="mt-4 flex flex-col gap-2">
         <div className="flex items-center justify-between p-3 rounded-2xl bg-background border border-border hover:bg-muted transition-colors group/item cursor-pointer">

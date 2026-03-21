@@ -1,5 +1,5 @@
 ---
-description: 베들레헴 홈페이지 제작 시 반드시 준수해야 하는 2026 트렌드, 다크/라이트 모드, 코딩 컨벤션 규칙
+description: 베들레헴 홈페이지 제작 시 반드시 준수해야 하는 최신 트렌드 및 기능, 다크/라이트 모드, 코딩 컨벤션 규칙
 ---
 
 # 베들레헴 홈페이지 제작 표준 지침
@@ -38,10 +38,11 @@ description: 베들레헴 홈페이지 제작 시 반드시 준수해야 하는 
 <h1 className="text-2xl md:text-4xl lg:text-5xl">
 ```
 
-## 2. 2026 트렌드 디자인 체크리스트
+## 2. 작업 당일 기준 최신 트렌드 디자인 및 기능 적용
 
-최신 웹 트렌드를 반영하여 아름답고 동적인 페이지를 구성합니다.
+특정 연도에 얽매이지 않고, **작업을 진행하는 당일을 기준**으로 언제나 가장 세련되고 진보된 웹 디자인 트렌드와 기술 트렌드를 반영합니다. 또한, 겉모습(스타일)뿐만 아니라 **현재 웹사이트(베들레헴)에 적합한 최신 웹 기능(예: 성능 최적화 기법, 최신 접근성, 유용한 인터랙션 기술 등)이 있는지 항상 고민하고 능동적으로 제안 및 적용**합니다.
 
+- [ ] **적합한 최신 기능 검토 및 적용 (핵심)**: 작업 시점의 최신 기술 중 현재 페이지의 성격(후원, 봉사, 정보 전달 등)에 도움이 되는 유용한 기능이나 라이브러리가 있다면 적극 도입합니다.
 - [ ] **Scrollytelling & 애니메이션**: 스크롤에 따라 콘텐츠가 자연스럽게 나타나는 인터랙티브 애니메이션 적용 (`framer-motion`의 `whileInView` 활용). 부드러운 전환(`transition-all duration-300`)과 마이크로 애니메이션(`hover:scale-105` 등)을 적극 사용합니다.
 - [ ] **Bold Typography**: 제목은 크고 굵게 (h1: `text-4xl md:text-6xl font-bold`), 부제목/본문은 `text-muted-foreground`로 가독성을 높입니다.
 - [ ] **Glassmorphism & 모서리 처리**: `backdrop-blur-md bg-card/90` 와 같은 글래스모피즘 효과와 부드러운 모서리(`rounded-2xl` ~ `rounded-4xl`)를 사용한 카드 레이아웃(`bg-card border border-border`)을 준수합니다.
@@ -134,3 +135,34 @@ export default function PageName() {
 2. **반응형 체크**: 모바일(320px~), 태블릿(768px~), 데스크탑(1024px~) 3가지 해상도에서 레이아웃 깨짐, 가로 스크롤 여부를 확인합니다.
 3. **다크/라이트 모드 체크**: 각 모드 전환 시 텍스트, 배경, 아이콘 가시성이 분명하고 하드코딩된 색상이 튀지 않는지 양쪽 모두 점검합니다.
 4. **SubMenuNav 확인**: 서브 메뉴바가 필요한 페이지인지 확인하고 누락되었다면 추가합니다.
+
+## 7. URL 보안 및 라우트 난독화 규칙 (필수)
+
+외부에서 URL만으로 사이트 구조를 파악하지 못하도록, 모든 내부 페이지 경로는 **난독화된 코드 경로**로 노출됩니다.
+
+### 핵심 원칙
+
+- ❌ **하드코딩된 경로 문자열 사용 절대 금지**: `href="/intro/greeting"`, `href="/donation"` 등 직접 경로 문자열을 사용하면 안 됩니다.
+- ✅ **반드시 `ROUTES` 상수 사용**: `import { ROUTES } from "@/lib/routes"` 후 `href={ROUTES.INTRO_GREETING}` 형태로 사용합니다.
+
+### 새 페이지 추가 시 체크리스트
+
+1. `src/lib/routes.ts`의 `ROUTE_MAP`에 난독화 경로 → 실제 파일 경로 매핑 추가
+2. `src/lib/routes.ts`의 `ROUTES` 객체에 상수 이름 추가
+3. `SubMenuNav.tsx`의 `subMenuMap`에 해당 난독화 경로 키 등록
+4. 모든 링크에서 `ROUTES.새_상수` 사용
+
+### 코드 예시
+
+```tsx
+// ✅ 올바른 방법
+import { ROUTES } from "@/lib/routes";
+
+<Link href={ROUTES.INTRO_GREETING}>인사말</Link>
+<a href={ROUTES.DONATION}>후원안내로 돌아가기</a>
+
+// ❌ 잘못된 방법
+<Link href="/intro/greeting">인사말</Link>
+<a href="/donation">후원안내로 돌아가기</a>
+```
+

@@ -60,7 +60,7 @@ export default function HistoryPage() {
       <SubMenuNav />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-muted flex items-center justify-center text-muted-foreground">
           <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-background z-10" />
           <img src="/images/history_hero.png" alt="걸어온 길" className="w-full h-full object-cover opacity-80" />

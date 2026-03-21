@@ -6,6 +6,7 @@ import SubMenuNav from "@/components/SubMenuNav";
 import { motion } from "framer-motion";
 import { Users, FileText, CheckCircle, PhoneCall, Info } from "lucide-react";
 import Link from "next/link";
+import { ROUTES } from "@/lib/routes";
 
 const steps = [
   { title: "봉사 문의", desc: "전화 또는 온라인을 통해 봉사 가능 여부를 확인합니다.", icon: <PhoneCall size={24} /> },
@@ -60,7 +61,7 @@ export default function VolunteerPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-12">
-              <div className="bg-card p-10 rounded-[2.5rem] border border-border h-full shadow-sm">
+              <div className="bg-card p-10 rounded-4xl border border-border h-full shadow-sm">
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
                   <Info className="text-primary" />
                   봉사 시 유의사항
@@ -85,7 +86,7 @@ export default function VolunteerPage() {
                 </ul>
               </div>
 
-              <div className="bg-card p-10 rounded-[2.5rem] border border-border shadow-sm flex flex-col justify-between">
+              <div className="bg-card p-10 rounded-4xl border border-border shadow-sm flex flex-col justify-between">
                 <div>
                   <h3 className="text-2xl font-bold mb-6">온라인 신청하기</h3>
                   <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -94,7 +95,7 @@ export default function VolunteerPage() {
                   </p>
                 </div>
                 <Link
-                  href="/volunteer/apply"
+                  href={ROUTES.VOLUNTEER_APPLY}
                   className="block w-full bg-primary text-primary-foreground py-4 rounded-2xl font-bold text-center hover:opacity-90 transition-all shadow-xl shadow-primary/20"
                 >
                   자원봉사 신청서 작성

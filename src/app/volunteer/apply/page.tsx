@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import SubMenuNav from "@/components/SubMenuNav";
 import { motion } from "framer-motion";
+import { ROUTES } from "@/lib/routes";
 
 export default function VolunteerApplyPage() {
   const [form, setForm] = useState({
@@ -73,7 +74,7 @@ export default function VolunteerApplyPage() {
                 자원봉사에 관심을 가져주셔서 감사합니다. <br />
                 담당자가 확인 후 기재하신 연락처로 안내드리겠습니다.
               </p>
-              <a href="/volunteer" className="text-primary font-bold hover:underline">
+              <a href={ROUTES.VOLUNTEER} className="text-primary font-bold hover:underline">
                 ← 봉사안내 페이지로 돌아가기
               </a>
             </motion.div>
@@ -221,7 +222,7 @@ export default function VolunteerApplyPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-slate-900 dark:bg-primary text-white py-4 rounded-2xl font-bold text-lg hover:bg-slate-800 dark:hover:bg-primary/90 transition-all shadow-xl shadow-slate-200 dark:shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-primary text-white py-4 rounded-2xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "전송 중..." : "봉사 신청하기"}
               </button>

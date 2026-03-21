@@ -36,13 +36,13 @@ export default function ThemeToggle() {
       <button
         onClick={() => setTheme(isDark ? "light" : "dark")}
         className={`relative w-11 h-6 flex items-center rounded-full p-1 transition-colors duration-300 focus:outline-none ${
-          isDark ? "bg-primary" : "bg-slate-300 dark:bg-slate-700"
+          isDark ? "bg-primary" : "bg-muted"
         }`}
         aria-label="다크 모드 스위치"
       >
         <motion.div
           layout
-          className="w-4 h-4 bg-white rounded-full shadow-sm"
+          className="w-4 h-4 bg-background rounded-full shadow-sm"
           animate={{
             x: isDark ? 20 : 0
           }}
